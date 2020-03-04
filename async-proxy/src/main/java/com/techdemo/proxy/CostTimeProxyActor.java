@@ -1,6 +1,5 @@
 package com.techdemo.proxy;
 
-import akka.actor.ActorPath;
 import akka.actor.typed.*;
 import akka.actor.typed.javadsl.AbstractBehavior;
 import akka.actor.typed.javadsl.ActorContext;
@@ -107,7 +106,7 @@ public class CostTimeProxyActor extends AbstractBehavior<CostTimeProxyActor.Cost
 
         private final String result;
 
-        private final ActorPath actorPath;
+        private final String actorPath;
 
         private final ActorRef<RemoteCallActor.RemoteCallReq> from;
     }

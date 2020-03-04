@@ -1,12 +1,15 @@
 package com.techdemo.entrys;
 
-import akka.actor.ActorPath;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class EchoEntryParam implements ReqParam {
 
-    private final String request;
+    private String request;
 
-    private final ActorPath fromPath;
+    private String fromPath;
 }

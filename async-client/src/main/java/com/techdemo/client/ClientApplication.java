@@ -1,5 +1,8 @@
 package com.techdemo.client;
 
+import akka.actor.typed.ActorRef;
+import akka.actor.typed.ActorSystem;
+import com.techdemo.client.actor.MainActor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,7 +16,8 @@ public class ClientApplication {
         log.debug("start...");
 //        SpringApplication.run(ClientApplication.class);
 
-//        ActorSystem.create(DispatchActor(),"dispatch");
+        ActorRef<MainActor.Request> mainActor = ActorSystem.create(MainActor.create(), "main");
 
+        mainActor.tell(new MainActor.Request());
     }
 }

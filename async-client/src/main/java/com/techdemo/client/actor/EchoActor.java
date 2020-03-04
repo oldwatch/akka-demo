@@ -1,6 +1,7 @@
 package com.techdemo.client.actor;
 
 import akka.actor.ActorSelection;
+import akka.actor.Address;
 import akka.actor.typed.ActorRef;
 import akka.actor.typed.Behavior;
 import akka.actor.typed.javadsl.AbstractBehavior;
@@ -8,6 +9,7 @@ import akka.actor.typed.javadsl.ActorContext;
 import akka.actor.typed.javadsl.Behaviors;
 import akka.actor.typed.javadsl.Receive;
 import com.techdemo.entrys.EchoEntryParam;
+import com.techdemo.entrys.EchoResult;
 import lombok.Data;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,11 +38,11 @@ public class EchoActor extends AbstractBehavior<EchoActor.EchoRequest> {
 
     private Behavior<EchoRequest> onRequest(EchoRequest request) {
 
-        EchoEntryParam param = new EchoEntryParam(request.request, request.getCallBackRef().path());
-//
-//
-//        remotePath.tell(param,this.getContext().getSelf());
+        Address address = getContext().getSystem().address();
 
+        EchoEntryParam param = new EchoEntryParam(request.request, request.getCallBackRef().path().toStringWithAddress(address));
+
+        remotePath.tell(param, this.getContext().classicActorContext().self());
 
         return this;
 
@@ -51,7 +53,7 @@ public class EchoActor extends AbstractBehavior<EchoActor.EchoRequest> {
     public static class EchoRequest {
         private final String request;
 
-        private final ActorRef<EchoResponseActor.EchoResponse> callBackRef;
+        private final ActorRef<EchoResult> callBackRef;
 
     }
 

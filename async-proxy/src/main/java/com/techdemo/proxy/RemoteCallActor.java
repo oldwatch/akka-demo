@@ -1,6 +1,5 @@
 package com.techdemo.proxy;
 
-import akka.actor.ActorPath;
 import akka.actor.ActorSelection;
 import akka.actor.typed.Behavior;
 import akka.actor.typed.javadsl.AbstractBehavior;
@@ -29,7 +28,7 @@ public class RemoteCallActor extends AbstractBehavior<RemoteCallActor.RemoteCall
 
     private Behavior<RemoteCallReq> doRemoteCall(RemoteCallReq request) {
 
-        ActorPath path = request.path;
+        String path = request.path;
 
         ActorSelection selection = this.getContext().classicActorContext().actorSelection(path);
 
@@ -41,7 +40,7 @@ public class RemoteCallActor extends AbstractBehavior<RemoteCallActor.RemoteCall
 
     @Data
     public static class RemoteCallReq {
-        private final ActorPath path;
+        private final String path;
 
         private final RespResult result;
     }

@@ -1,14 +1,17 @@
 package com.techdemo.entrys;
 
 
-import akka.actor.ActorPath;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class CostTimeParam implements ReqParam {
 
-    private final int cost;
+    private int cost;
 
-    private final ActorPath fromPath;
+    private String fromPath;
 
 }

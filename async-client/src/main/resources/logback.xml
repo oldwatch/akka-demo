@@ -7,7 +7,7 @@
     </appender>
 
     <!-- Root Logger -->
-    <root level="info">
+    <root level="debug">
         <Appender-Ref ref="console"/>
     </root>
 </configuration>
