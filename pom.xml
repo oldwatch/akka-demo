@@ -14,12 +14,15 @@
         <module>async-client</module>
         <module>async-proxy</module>
         <module>comm-entrys</module>
+        <module>stream-source</module>
     </modules>
 
 
     <properties>
         <java.version>11</java.version>
         <akka.version>2.6.3</akka.version>
+        <akka.http.version>10.1.11</akka.http.version>
+        <akka.scala.version>2.13</akka.scala.version>
         <lambok.version>1.18.10</lambok.version>
         <logback.version>1.2.3</logback.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>

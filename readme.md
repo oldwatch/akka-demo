@@ -13,7 +13,6 @@
 
 ###待完成功能
 * dead letter box
-* 基于akka http的外部服务调用
 * 集群管理
 
 ##async-client
@@ -34,7 +33,7 @@
 演示Akka的流处理功能，实现数据队列
 
 ###已完成功能
-无
+* akka http 接口与actor对接
 
 ###待完成功能
 * 持久化流数据

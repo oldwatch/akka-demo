@@ -68,14 +68,15 @@
         <dependency>
             <groupId>com.typesafe.akka</groupId>
             <artifactId>akka-http_2.13</artifactId>
-            <version>10.1.11</version>
+            <version>${akka.http.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.typesafe.akka</groupId>
-            <artifactId>akka-stream_2.13</artifactId>
-            <version>${akka.version}</version>
+            <artifactId>akka-http-jackson_2.13</artifactId>
+            <version>${akka.http.version}</version>
         </dependency>
+
 
         <dependency>
             <groupId>com.typesafe.akka</groupId>

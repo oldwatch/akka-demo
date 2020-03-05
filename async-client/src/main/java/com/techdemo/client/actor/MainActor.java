@@ -20,7 +20,6 @@ public class MainActor extends AbstractBehavior<MainActor.Request> {
 
         super(context);
 
-
         echoActor = context.spawn(EchoActor.create(basePath), "echoActor");
 
         costTimeResponse = context.spawn(CostTimeResponseActor.create(), "costTimeResponse");

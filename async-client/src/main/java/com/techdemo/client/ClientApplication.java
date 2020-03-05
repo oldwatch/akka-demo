@@ -17,5 +17,9 @@ public class ClientApplication {
         ActorRef<MainActor.Request> mainActor = ActorSystem.create(MainActor.create(), "main");
 
         mainActor.tell(new MainActor.Request());
+
+
     }
+
+
 }
