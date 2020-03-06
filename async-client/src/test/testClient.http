@@ -1,0 +1,7 @@
+GET http://localhost:7070/hello
+Accept: text/plain
+
+###
+GET http://localhost:7070/echo/hello
+
+###

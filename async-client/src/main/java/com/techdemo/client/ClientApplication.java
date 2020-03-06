@@ -1,6 +1,5 @@
 package com.techdemo.client;
 
-import akka.actor.typed.ActorRef;
 import akka.actor.typed.ActorSystem;
 import com.techdemo.client.actor.MainActor;
 import org.slf4j.Logger;
@@ -14,9 +13,7 @@ public class ClientApplication {
 
         log.debug("start...");
 
-        ActorRef<MainActor.Request> mainActor = ActorSystem.create(MainActor.create(), "main");
-
-        mainActor.tell(new MainActor.Request());
+        ActorSystem<MainActor.Request> system = ActorSystem.create(MainActor.create(), "main");
 
 
     }

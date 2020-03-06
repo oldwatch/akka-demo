@@ -5,9 +5,9 @@ import akka.cluster.Cluster;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class MainEntrance {
+public class ProxyApplication {
 
-    private static final Logger log = LoggerFactory.getLogger(MainEntrance.class);
+    private static final Logger log = LoggerFactory.getLogger(ProxyApplication.class);
 
     public static void main(String[] argv) {
         log.info("starting...");
