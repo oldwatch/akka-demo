@@ -9,6 +9,8 @@ public class StreamApplication {
 
         final ActorSystem<MainActor.Request> system = ActorSystem.create(MainActor.create(), "stream");
 
+        System.out.println("finish system init");
+
 
     }
 

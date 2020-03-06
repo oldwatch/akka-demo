@@ -17,12 +17,11 @@ import akka.http.javadsl.server.AllDirectives;
 import akka.http.javadsl.server.Route;
 import akka.stream.Materializer;
 import akka.stream.javadsl.Flow;
-import akka.stream.javadsl.Source;
 import akka.util.ByteString;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.techdemo.entrys.EchoResult;
-import com.techdemo.entrys.StreamEntry;
 import com.techdemo.stream.actor.EchoActor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.Duration;
 import java.util.concurrent.CompletionStage;
@@ -31,13 +30,13 @@ import static akka.http.javadsl.server.PathMatchers.segment;
 
 public class HttpAllDirectives extends AllDirectives {
 
+    private final DemoStream demoSource;
 
     private final CompletionStage<ServerBinding> binding;
-    private final ObjectMapper mapper = new ObjectMapper();
     private final ActorSystem system;
     private final Http http;
     private final ActorRef<EchoActor.EchoRequest> echoActor;
-    private final Source<StreamEntry, NotUsed> demoSource;
+    private Logger log = LoggerFactory.getLogger(HttpAllDirectives.class);
 
     public HttpAllDirectives(ActorContext actorContext) {
 
@@ -45,7 +44,7 @@ public class HttpAllDirectives extends AllDirectives {
 
         this.echoActor = (ActorRef<EchoActor.EchoRequest>) actorContext.getChild("echo").get();
 
-        this.demoSource = DemoStream.getSource();
+        this.demoSource = new DemoStream();
 
         akka.actor.ActorSystem classicSystem = system.classicSystem();
 
@@ -73,10 +72,10 @@ public class HttpAllDirectives extends AllDirectives {
                 path("stream", () ->
                         get(() ->
                                 complete(HttpEntities.create(
-                                        ContentTypes.APPLICATION_JSON,
-                                        demoSource
-                                                .map(mapper::writeValueAsString)
+                                        ContentTypes.TEXT_PLAIN_UTF8,
+                                        demoSource.getSource2()
                                                 .map(ByteString::fromString)
+
                                 ))
                         )
                 ),

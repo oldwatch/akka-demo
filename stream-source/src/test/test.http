@@ -4,8 +4,3 @@ Accept: text/plain
 ###
 GET http://localhost:9090/echo/hello
 
-###
-GET http://localhost:9090/stream
-Accept:application/json
-
-###

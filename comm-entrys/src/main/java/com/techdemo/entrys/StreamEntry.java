@@ -9,6 +9,11 @@ import java.util.List;
 @NoArgsConstructor
 public class StreamEntry implements CborSerializable {
 
+    public static StreamEntry NULL = new StreamEntry();
+
+    static {
+        NULL.uuid = "_NULL_";
+    }
 
     private String uuid;
 
