@@ -19,12 +19,12 @@
 异步服务client
 
 实现了远程调用，远程回调
-通过clientApplication运行后直接触发远程调用任务
-
+通过akka http暴露入口点
 
 ###已完成功能
 * 远程actor调用
 * 基于path的远程actor回调
+* akka http 接口与actor对接
 
 ###待完成功能
 * 错误处理
@@ -33,7 +33,6 @@
 演示Akka的流处理功能，实现数据队列
 
 ###已完成功能
-* akka http 接口与actor对接
 
 ###待完成功能
 * 持久化流数据
